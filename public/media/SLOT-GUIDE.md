@@ -3,7 +3,7 @@
 Upload your real photos directly into this folder. The website uses these exact filenames.
 
 ## Chapter 1
-- chapter01-pickle.jpg
+- chapter01-photo1.jpg
 
 ## Chapter 2
 - chapter02-mahudi.jpg
