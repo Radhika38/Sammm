@@ -13,7 +13,7 @@ Upload your real photos directly into this folder. The website uses these exact 
 - chapter03-chat.jpg
 
 ## Chapter 4
-- chapter04-31may.jpg
+- chapter04-31maysmile.jpg
 
 ## Chapter 6
 - chapter06-movie.jpg
