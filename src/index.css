@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #0b080c;
+    color: #f7f2ea;
+    overflow-x: hidden;
+  }
+
+  /* Custom fonts */
+  .font-serif-romantic {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-handwriting {
+    font-family: 'Caveat', cursive, sans-serif;
+  }
+
+  .font-tech {
+    font-family: 'Space Grotesk', monospace, sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0910;
+}
+::-webkit-scrollbar-thumb {
+  background: #501020;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #801830;
+}
+
+/* Subtle glow utilities */
+.glow-burgundy {
+  box-shadow: 0 0 40px -10px rgba(133, 24, 42, 0.45);
+}
+
+.glow-gold {
+  box-shadow: 0 0 35px -8px rgba(230, 190, 109, 0.35);
+}
+
+.glow-text-gold {
+  text-shadow: 0 0 20px rgba(230, 190, 109, 0.4);
+}
+
+.glow-text-rose {
+  text-shadow: 0 0 24px rgba(255, 130, 160, 0.5);
+}
+
+/* =========================================================
+   MIDNIGHT THEME (Late-Night Navy & Silver Palette)
+   ========================================================= */
+.midnight-theme {
+  background-color: #040814 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Subtle late-night viewing filter for existing components */
+.midnight-theme .midnight-filter-layer {
+  /* Shifts warm burgundy/crimson into rich midnight navy/sapphire & softens harsh light for 2 AM viewing */
+  filter: brightness(0.96) contrast(1.03) hue-rotate(190deg) saturate(0.88);
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Counteract filter on photos, video media, polaroids, and canvas so real memories retain natural warm skin tones */
+.midnight-theme .midnight-filter-layer img,
+.midnight-theme .midnight-filter-layer video,
+.midnight-theme .midnight-filter-layer canvas,
+.midnight-theme .midnight-filter-layer .polaroid-photo,
+.midnight-theme .midnight-filter-layer [data-preserve-colors="true"] {
+  filter: hue-rotate(-190deg) saturate(1.14) brightness(1.04);
+}
+
+/* Midnight scrollbars */
+.midnight-theme ::-webkit-scrollbar-track {
+  background: #040814;
+}
+.midnight-theme ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}
+.midnight-theme ::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Midnight glowing shadows */
+.midnight-theme .glow-burgundy {
+  box-shadow: 0 0 40px -10px rgba(30, 58, 138, 0.45);
+}
+
+.midnight-theme .glow-gold {
+  box-shadow: 0 0 35px -8px rgba(203, 213, 225, 0.35);
+}
+
+.midnight-theme .glow-text-gold {
+  text-shadow: 0 0 20px rgba(203, 213, 225, 0.5);
+}
+
+.midnight-theme .glow-text-rose {
+  text-shadow: 0 0 24px rgba(56, 189, 248, 0.45);
+}
+
+/* Noise overlay */
+.bg-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Polaroid tape */
+.washi-tape {
+  background: rgba(245, 236, 224, 0.4);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Happy Boyfriend Day, Sammm ❤️",
+  "description": "An interactive cinematic surprise, relationship timeline, and personal story for Sammm from Radhika.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
