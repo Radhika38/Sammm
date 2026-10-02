@@ -1,6 +1,6 @@
 # Sammm — GitHub Media Slots ❤️
 
-Upload your real photos directly into this folder. The website uses these exact filenames.
+Upload your real photos/videos directly into this folder. The website uses these exact filenames.
 
 ## Chapter 1
 - chapter01-pickle.jpg
@@ -19,25 +19,25 @@ Upload your real photos directly into this folder. The website uses these exact 
 - chapter06-movie.jpg
 
 ## Chapter 8 — Scrapbook
-- chapter08-memory-01.jpg
-- chapter08-memory-02.jpg
-- chapter08-memory-03.jpg
-- chapter08-memory-04.jpg
-- chapter08-memory-05.jpg
-- chapter08-memory-06.jpg
-- chapter08-memory-07.jpg
-- chapter08-memory-08.jpg
-- chapter08-memory-09.jpg
-- chapter08-memory-10.jpg
-- chapter08-memory-11.jpg
-- chapter08-memory-12.jpg
-- chapter08-memory-13.jpg
-- chapter08-memory-14.jpg
-- chapter08-memory-15.jpg
-- chapter08-memory-16.jpg
+- momo.mp4
+- 31may.mp4
+- 23july.mp4
+- 1aug.jpeg
+- 3aug.jpeg
+- 6aug.jpeg
+- 9aug.mp4
+- 16aug.mp4
+- 17aug.jpeg
+- 18aug.jpeg
+- 22aug.jpeg
+- 23aug.mp4
+- 28aug.jpeg
+- 7sep.jpeg
+- 19sep.jpeg
+- 26sep.mp4
 
 ## Chapter 10
 - chapter10-doctor.jpg
 
 ### Important
-Keep the filenames exactly the same. Replace/upload the image at the matching slot and the website will show it there after the next GitHub Pages deployment.
+Keep the filenames exactly the same. Replace/upload the matching photo/video and the website will show it in the corresponding Chapter 8 memory slot after the next GitHub Pages deployment.
