@@ -35,21 +35,22 @@ interface Chapter08GalleryAndQuizProps {
 }
 
 const DEFAULT_SLOTS: MemoryCard[] = [
-  { id: 'mem-1', mediaKey: 'ADD_OUR_PHOTOS_HERE_1', caption: '', date: '', rotation: -1.5 },
-  { id: 'mem-2', mediaKey: 'ADD_OUR_PHOTOS_HERE_2', caption: '', date: '', rotation: 1.2 },
-  { id: 'mem-3', mediaKey: 'ADD_OUR_PHOTOS_HERE_3', caption: '', date: '', rotation: -2 },
-  { id: 'mem-4', mediaKey: 'ADD_OUR_PHOTOS_HERE_4', caption: '', date: '', rotation: 1.8 },
-  { id: 'mem-5', mediaKey: 'ADD_OUR_PHOTOS_HERE_5', caption: '', date: '', rotation: -1 },
-  { id: 'mem-6', mediaKey: 'ADD_OUR_PHOTOS_HERE_6', caption: '', date: '', rotation: 2 },
-  { id: 'mem-7', mediaKey: 'ADD_OUR_PHOTOS_HERE_7', caption: '', date: '', rotation: -1.4 },
-  { id: 'mem-8', mediaKey: 'ADD_OUR_PHOTOS_HERE_8', caption: '', date: '', rotation: 1.6 },
-  { id: 'mem-9', mediaKey: 'ADD_OUR_PHOTOS_HERE_9', caption: '', date: '', rotation: -2.1 },
-  { id: 'mem-10', mediaKey: 'ADD_OUR_PHOTOS_HERE_10', caption: '', date: '', rotation: 1.3 },
-  { id: 'mem-11', mediaKey: 'ADD_OUR_PHOTOS_HERE_11', caption: '', date: '', rotation: -1.7 },
-  { id: 'mem-12', mediaKey: 'ADD_OUR_PHOTOS_HERE_12', caption: '', date: '', rotation: 2 },
-  { id: 'mem-13', mediaKey: 'ADD_OUR_PHOTOS_HERE_13', caption: '', date: '', rotation: -1.2 },
-  { id: 'mem-14', mediaKey: 'ADD_OUR_PHOTOS_HERE_14', caption: '', date: '', rotation: 1.8 },
-  { id: 'mem-15', mediaKey: 'ADD_OUR_PHOTOS_HERE_15', caption: '', date: '', rotation: -2.3 },
+  { id: 'mem-1', mediaKey: 'ADD_OUR_PHOTOS_HERE_1', caption: 'Started chatorapan 😂', date: '17/5/26', rotation: -1.5 },
+  { id: 'mem-2', mediaKey: 'ADD_OUR_PHOTOS_HERE_2', caption: 'Cricket date 🏏❤️', date: '31/5/26', rotation: 1.2 },
+  { id: 'mem-3', mediaKey: 'ADD_OUR_PHOTOS_HERE_3', caption: 'Connection started with baarish 🌧️', date: '23/7/26', rotation: -2 },
+  { id: 'mem-4', mediaKey: 'ADD_OUR_PHOTOS_HERE_4', caption: 'First mandir date as a partner 🛕❤️', date: '1/8/26', rotation: 1.8 },
+  { id: 'mem-5', mediaKey: 'ADD_OUR_PHOTOS_HERE_5', caption: 'My first b’day with you 🎂', date: '3/8/26', rotation: -1 },
+  { id: 'mem-6', mediaKey: 'ADD_OUR_PHOTOS_HERE_6', caption: 'Ghumi ghumi started ✨ btw this is my one of fav photos', date: '6/8/26', rotation: 2 },
+  { id: 'mem-7', mediaKey: 'ADD_OUR_PHOTOS_HERE_7', caption: 'Official first fight 😭❤️', date: '9/8/26', rotation: -1.4 },
+  { id: 'mem-8', mediaKey: 'ADD_OUR_PHOTOS_HERE_8', caption: 'Maroo devdas 🥹', date: '16/8/26', rotation: 1.6 },
+  { id: 'mem-9', mediaKey: 'ADD_OUR_PHOTOS_HERE_9', caption: 'Patchup ❤️', date: '17/8/26', rotation: -2.1 },
+  { id: 'mem-10', mediaKey: 'ADD_OUR_PHOTOS_HERE_10', caption: 'Second trip… something special happened 👀 IYKYK', date: '18/8/26', rotation: 1.3 },
+  { id: 'mem-11', mediaKey: 'ADD_OUR_PHOTOS_HERE_11', caption: 'We, RF and sukoon. ❤️', date: '22/8/26', rotation: -1.7 },
+  { id: 'mem-12', mediaKey: 'ADD_OUR_PHOTOS_HERE_12', caption: 'My fav view 🥹', date: '23/8/26', rotation: 2 },
+  { id: 'mem-13', mediaKey: 'ADD_OUR_PHOTOS_HERE_13', caption: 'Maroo hero 🦸‍♂️❤️', date: '28/8/26', rotation: -1.2 },
+  { id: 'mem-14', mediaKey: 'ADD_OUR_PHOTOS_HERE_14', caption: 'My 2 fav ❤️', date: '7/9/26', rotation: 1.8 },
+  { id: 'mem-15', mediaKey: 'ADD_OUR_PHOTOS_HERE_15', caption: 'Bhondu 😂❤️', date: '19/9/26', rotation: -2.3 },
+  { id: 'mem-16', mediaKey: 'ADD_OUR_PHOTOS_HERE_16', caption: 'His favourite thing to squish 😂❤️', date: '26/9/26', rotation: 1.4 },
 ];
 
 export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = ({
@@ -229,7 +230,7 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
             {cards.length} Memories
           </span>
           <span className="text-xs text-stone-400 hidden sm:inline">
-            Tap camera to upload photo/video • Tap pencil to write
+            Tap camera to upload photo/video • Tap pencil to write • Memories stay saved in your browser
           </span>
         </div>
 
