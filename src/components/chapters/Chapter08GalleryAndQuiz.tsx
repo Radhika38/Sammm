@@ -230,7 +230,7 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
             {cards.length} Memories
           </span>
           <span className="text-xs text-stone-400 hidden sm:inline">
-            Tap camera to upload photo/video • Tap pencil to write • Memories stay saved in your browser
+            Every little memory deserves its own place ❤️
           </span>
         </div>
 
