@@ -27,6 +27,11 @@ jobs:
           node-version: 22
           package-manager-cache: false
 
+      - name: Extract static media
+        run: |
+          mkdir -p public
+          unzip -o Sammm-static-media.zip -d public
+
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
