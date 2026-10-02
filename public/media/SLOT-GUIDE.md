@@ -6,7 +6,7 @@ Upload your real photos directly into this folder. The website uses these exact 
 - chapter01-pickle.jpg
 
 ## Chapter 2
-- chapter02-mahudi.jpg
+- chapter02-mahudi.jpeg
 - chapter02-bhavnath.jpg
 
 ## Chapter 3
