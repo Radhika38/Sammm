@@ -15,7 +15,7 @@ export const GITHUB_MEDIA_KEYS = new Set([
 ]);
 
 export const DEFAULT_MEDIA_CONFIG: Record<string, string> = {
-  ADD_FIRST_PHOTO_HERE: `${STATIC_MEDIA_BASE}chapter01-photo.jpg`,
+  ADD_FIRST_PHOTO_HERE: `${STATIC_MEDIA_BASE}pickle.jpg`,
   ADD_MAHUDI_PHOTO_HERE: `${STATIC_MEDIA_BASE}chapter02-mahudi.jpg`,
   ADD_BHAVNATH_PHOTO_HERE: `${STATIC_MEDIA_BASE}chapter02-bhavnath.jpg`,
   ADD_CHAT_SCREENSHOTS_HERE: `${STATIC_MEDIA_BASE}chapter03-chat.jpg`,
