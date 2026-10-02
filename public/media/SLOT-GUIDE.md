@@ -37,7 +37,7 @@ Upload your real photos/videos directly into this folder. The website uses these
 - 26sep.mp4
 
 ## Chapter 10
-- chapter10-doctor.jpg
+- chapter10-doctor.jpeg
 
 ### Important
 Keep the filenames exactly the same. Replace/upload the matching photo/video and the website will show it in the corresponding Chapter 8 memory slot after the next GitHub Pages deployment.
