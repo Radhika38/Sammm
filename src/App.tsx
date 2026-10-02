@@ -72,7 +72,13 @@ export default function App() {
   const [mediaConfig, setMediaConfig] = useState<Record<string, string>>(() => {
     try {
       const saved = localStorage.getItem('sammm_radhika_media_v2');
-      return saved ? JSON.parse(saved) : DEFAULT_MEDIA_CONFIG;
+      const parsed = saved ? JSON.parse(saved) : {};
+      // Static website media must remain the fallback even if an older browser
+      // session contains empty/placeholder media values.
+      const nonEmptySaved = Object.fromEntries(
+        Object.entries(parsed || {}).filter(([, value]) => typeof value === 'string' && value.trim() !== '')
+      );
+      return { ...DEFAULT_MEDIA_CONFIG, ...nonEmptySaved };
     } catch {
       return DEFAULT_MEDIA_CONFIG;
     }
@@ -173,9 +179,14 @@ export default function App() {
     let isMounted = true;
     persistentMediaStorage.getAllMedia().then((storedMedia) => {
       if (isMounted && storedMedia && Object.keys(storedMedia).length > 0) {
+        const nonEmptyStored = Object.fromEntries(
+          Object.entries(storedMedia).filter(
+            ([, value]) => typeof value === 'string' && value.trim() !== ''
+          )
+        );
         setMediaConfig((prev) => ({
           ...prev,
-          ...storedMedia,
+          ...nonEmptyStored,
         }));
       }
     });
