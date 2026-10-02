@@ -38,7 +38,7 @@ import { Chapter09TheLetter } from './components/chapters/Chapter09TheLetter';
 import { Chapter10DoctorSammm } from './components/chapters/Chapter10DoctorSammm';
 import { FinalSurprise } from './components/FinalSurprise';
 
-import { DEFAULT_MEDIA_CONFIG, EASTER_EGGS_LIST } from './data/mediaConfig';
+import { DEFAULT_MEDIA_CONFIG, GITHUB_MEDIA_KEYS, EASTER_EGGS_LIST } from './data/mediaConfig';
 import { BOLLYWOOD_LOVE_SONGS, BollywoodSong } from './data/bollywoodSongs';
 import { sound } from './services/soundEffects';
 import { TransitionNote, loadTransitionNotes, saveTransitionNotes } from './data/transitionNotes';
@@ -76,7 +76,13 @@ export default function App() {
       // Static website media must remain the fallback even if an older browser
       // session contains empty/placeholder media values.
       const nonEmptySaved = Object.fromEntries(
-        Object.entries(parsed || {}).filter(([, value]) => typeof value === 'string' && value.trim() !== '')
+        Object.entries(parsed || {}).filter(([key, value]) => {
+          if (typeof value !== 'string' || value.trim() === '') return false;
+          // For GitHub-managed slots, only a user-uploaded local data URL may
+          // override the fixed repository path. Old saved URLs are ignored.
+          if (GITHUB_MEDIA_KEYS.has(key)) return value.startsWith('data:');
+          return true;
+        })
       );
       return { ...DEFAULT_MEDIA_CONFIG, ...nonEmptySaved };
     } catch {
@@ -180,9 +186,11 @@ export default function App() {
     persistentMediaStorage.getAllMedia().then((storedMedia) => {
       if (isMounted && storedMedia && Object.keys(storedMedia).length > 0) {
         const nonEmptyStored = Object.fromEntries(
-          Object.entries(storedMedia).filter(
-            ([, value]) => typeof value === 'string' && value.trim() !== ''
-          )
+          Object.entries(storedMedia).filter(([key, value]) => {
+            if (typeof value !== 'string' || value.trim() === '') return false;
+            if (GITHUB_MEDIA_KEYS.has(key)) return value.startsWith('data:');
+            return true;
+          })
         );
         setMediaConfig((prev) => ({
           ...prev,
