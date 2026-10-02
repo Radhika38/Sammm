@@ -59,23 +59,24 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
   onNext,
   onTriggerEasterEgg,
 }) => {
-  // Load customizable memory cards (captions, dates) from localStorage
+  // Keep every Polaroid locked to its own GitHub media slot.
+  // Old saved mediaKey swaps are intentionally ignored; captions/dates are preserved.
   const [cards, setCards] = useState<MemoryCard[]>(() => {
     try {
       const saved = localStorage.getItem('radhika_scrapbook_cards_v2');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          // If fewer than DEFAULT_SLOTS, append the 9 new slots automatically
-          const existingIds = new Set(parsed.map((c: MemoryCard) => c.id));
-          const missing = DEFAULT_SLOTS.filter((s) => !existingIds.has(s.id));
-          if (missing.length > 0) {
-            const merged = [...parsed, ...missing];
-            localStorage.setItem('radhika_scrapbook_cards_v2', JSON.stringify(merged));
-            return merged;
-          }
-          return parsed;
-        }
+      const parsed = saved ? JSON.parse(saved) : [];
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        const byId = new Map(parsed.map((c: MemoryCard) => [c.id, c]));
+        const fixed = DEFAULT_SLOTS.map((slot) => {
+          const old = byId.get(slot.id);
+          return {
+            ...slot,
+            caption: old?.caption ?? slot.caption,
+            date: old?.date ?? slot.date,
+          };
+        });
+        localStorage.setItem('radhika_scrapbook_cards_v2', JSON.stringify(fixed));
+        return fixed;
       }
     } catch {
       // ignore
@@ -87,24 +88,7 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
   const [editingCard, setEditingCard] = useState<MemoryCard | null>(null);
   const [editCaption, setEditCaption] = useState('');
   const [editDate, setEditDate] = useState('');
-  const chapter8MediaOptions = [
-    ['ADD_OUR_PHOTOS_HERE_1', 'Memory 1 • 17 May — Chatorapan'],
-    ['ADD_OUR_PHOTOS_HERE_2', 'Memory 2 • 31 May — Cricket date'],
-    ['ADD_OUR_PHOTOS_HERE_3', 'Memory 3 • 23 July — Baarish'],
-    ['ADD_OUR_PHOTOS_HERE_4', 'Memory 4 • 1 Aug — Mandir date'],
-    ['ADD_OUR_PHOTOS_HERE_5', 'Memory 5 • 3 Aug — Birthday'],
-    ['ADD_OUR_PHOTOS_HERE_6', 'Memory 6 • 6 Aug — Ghumi ghumi'],
-    ['ADD_OUR_PHOTOS_HERE_7', 'Memory 7 • 9 Aug — First fight'],
-    ['ADD_OUR_PHOTOS_HERE_8', 'Memory 8 • 16 Aug — Devdas'],
-    ['ADD_OUR_PHOTOS_HERE_9', 'Memory 9 • 17 Aug — Patchup'],
-    ['ADD_OUR_PHOTOS_HERE_10', 'Memory 10 • 18 Aug — Second trip'],
-    ['ADD_OUR_PHOTOS_HERE_11', 'Memory 11 • 22 Aug — RF & sukoon'],
-    ['ADD_OUR_PHOTOS_HERE_12', 'Memory 12 • 23 Aug — Fav view'],
-    ['ADD_OUR_PHOTOS_HERE_13', 'Memory 13 • 28 Aug — Maroo hero'],
-    ['ADD_OUR_PHOTOS_HERE_14', 'Memory 14 • 7 Sep — My 2 fav'],
-    ['ADD_OUR_PHOTOS_HERE_15', 'Memory 15 • 19 Sep — Bhondu'],
-    ['ADD_OUR_PHOTOS_HERE_16', 'Memory 16 • 26 Sep — Favourite squish'],
-  ];
+
 
   // Save changes to localStorage and IndexedDB vault
   const saveCards = (newCards: MemoryCard[]) => {
@@ -122,10 +106,16 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
     let isMounted = true;
     persistentMediaStorage.getScrapbookCards().then((indexedCards) => {
       if (isMounted && indexedCards && Array.isArray(indexedCards) && indexedCards.length > 0) {
-        const existingIds = new Set(indexedCards.map((c: MemoryCard) => c.id));
-        const missing = DEFAULT_SLOTS.filter((s) => !existingIds.has(s.id));
-        const merged = missing.length > 0 ? [...indexedCards, ...missing] : indexedCards;
-        setCards(merged);
+        const byId = new Map(indexedCards.map((c: MemoryCard) => [c.id, c]));
+        const fixed = DEFAULT_SLOTS.map((slot) => {
+          const old = byId.get(slot.id);
+          return {
+            ...slot,
+            caption: old?.caption ?? slot.caption,
+            date: old?.date ?? slot.date,
+          };
+        });
+        setCards(fixed);
       }
     });
     return () => {
@@ -237,7 +227,7 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
           Our Private Polaroid & Reel Gallery 📸🎞️
         </h2>
         <p className="text-xs sm:text-sm text-stone-300 font-sans max-w-xl mx-auto">
-          Har memory ko apni jagah do — aur zarurat ho toh ✏️ se edit karo.
+          Har photo ki ek fixed jagah hai ❤️ GitHub me exact filename upload karo.
         </p>
       </motion.div>
 
@@ -248,7 +238,7 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
             {cards.length} Memories
           </span>
           <span className="text-xs text-stone-400 hidden sm:inline">
-            Every little memory deserves its own place ❤️
+            GitHub media slots • upload once, it appears in the matching memory ❤️
           </span>
         </div>
 
@@ -265,7 +255,10 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 mb-12">
         {cards.map((card, index) => {
           const mediaUrl = mediaConfig[card.mediaKey];
-          const hasMedia = Boolean(mediaUrl);
+          const isGithubPlaceholder = Boolean(
+            mediaUrl && mediaUrl.includes('/media/') && mediaUrl.includes('chapter')
+          );
+          const hasMedia = Boolean(mediaUrl) && !isGithubPlaceholder;
           const mediaIsVideo = isVideo(mediaUrl);
 
           return (
@@ -449,30 +442,7 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
                 </button>
               </div>
 
-              {/* Easy Memory Selector */}
-              <div className="space-y-1.5">
-                <label className="block text-xs font-mono text-[#e6be6d] uppercase tracking-wider">
-                  Which memory should be here? 📸
-                </label>
-                <select
-                  value={editingCard.mediaKey}
-                  onChange={(e) => {
-                    const updated = cards.map((c) =>
-                      c.id === editingCard.id ? { ...c, mediaKey: e.target.value } : c
-                    );
-                    setEditingCard({ ...editingCard, mediaKey: e.target.value });
-                    saveCards(updated);
-                  }}
-                  className="w-full px-3 py-2.5 rounded-xl bg-[#0e030a] border border-[#6b162a] focus:border-[#e6be6d] text-white font-sans text-sm outline-none"
-                >
-                  {chapter8MediaOptions.map(([key, label]) => (
-                    <option key={key} value={key}>{label}</option>
-                  ))}
-                </select>
-                <p className="text-[10px] text-stone-500">
-                  Bas memory select karo — photo/video automatically change ho jayega.
-                </p>
-              </div>
+
 
               {/* Caption Input */}
               <div className="space-y-1.5">
