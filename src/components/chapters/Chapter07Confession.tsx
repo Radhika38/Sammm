@@ -12,19 +12,19 @@ interface Chapter07ConfessionProps {
 
 const DEFAULT_CH07_BLOCKS: ContentBlockData[] = [
   {
-    id: 'ch07-confession-text',
+    id: 'ch07-confession-love',
     type: 'text',
     title: '27 July 2026 • The Confession ❤️',
-    subtitle: 'OFFICIAL DATE',
-    body: 'When you finally took a deep breath, gave up pretending, and confessed what I had secretly known for months. The best plot twist ever.',
+    subtitle: 'THE DAY WE BECAME US',
+    body: 'No photo needed here. This chapter is about the words that changed everything: “I LOVE YOU.” A tiny sentence, a huge beginning, and the moment I knew this was real.',
     mediaKey: 'ADD_CONFESSION_MEDIA_1',
   },
   {
-    id: 'ch07-confession-photo',
-    type: 'photo',
-    title: 'The Night My Heart Found Its Home',
+    id: 'ch07-confession-note',
+    type: 'text',
+    title: '27 July • 02:47 AM',
     subtitle: 'FOREVER BEGAN HERE',
-    body: 'From quiet glances across the pickleball net to whispering "I love you". Upload our photo or video from this era here!',
+    body: 'From quiet glances and endless conversations to finally saying what was already living in both our hearts. I would choose this plot twist again and again. ❤️',
     mediaKey: 'ADD_CONFESSION_PHOTO_HERE',
   },
 ];
@@ -90,18 +90,25 @@ export const Chapter07Confession: React.FC<Chapter07ConfessionProps> = ({
         </div>
       ) : (
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="my-6 p-6 rounded-3xl bg-[#260917]/90 border border-[#e6be6d]/50 text-center space-y-2 shadow-2xl"
+          initial={{ opacity: 0, scale: 0.92, y: 12 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 180, damping: 14 }}
+          className="my-6 relative overflow-hidden p-8 sm:p-10 rounded-[2rem] bg-gradient-to-br from-[#260917] via-[#3b0c1d] to-[#180610] border border-[#e6be6d]/60 text-center shadow-[0_0_55px_rgba(186,30,61,0.28)]"
         >
+          <Sparkles className="absolute top-5 left-6 w-5 h-5 text-[#e6be6d] animate-pulse" />
+          <Sparkles className="absolute bottom-6 right-7 w-4 h-4 text-[#ffd6e0] animate-pulse" />
           <span className="text-xs font-mono text-[#ffd700] uppercase tracking-widest font-bold">
             27 JULY 2026 • 02:47 AM
           </span>
-          <h3 className="font-serif-romantic text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#ffd6e0] to-[#ffd700]">
-            “I LOVE YOU, RADHIKA.”
+          <div className="mt-5 mb-4 text-6xl sm:text-7xl animate-pulse">❤️</div>
+          <h3 className="font-serif-romantic text-4xl sm:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#ffd6e0] to-[#ffd700]">
+            “I LOVE YOU.”
           </h3>
-          <p className="text-sm text-stone-300 font-serif-romantic italic">
-            And right there, the whole universe finally made sense.
+          <p className="mt-4 text-base sm:text-lg text-stone-200 font-serif-romantic italic">
+            And just like that… we became us.
+          </p>
+          <p className="mt-2 text-xs font-mono text-stone-400">
+            No photo required. This memory deserves its own page. ✨
           </p>
         </motion.div>
       )}
