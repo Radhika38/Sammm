@@ -352,7 +352,7 @@ export default function App() {
   const handleUnlockSuccess = () => {
     try {
       sessionStorage.setItem('storyUnlocked', 'true');
-      window.history.pushState({ page: 'story' }, '', '/story');
+      window.history.pushState({ page: 'story' }, '', `${window.location.pathname}#story`);
     } catch {
       // ignore
     }
