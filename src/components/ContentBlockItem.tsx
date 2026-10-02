@@ -61,7 +61,13 @@ export const ContentBlockItem: React.FC<ContentBlockItemProps> = ({
     );
   };
 
-  const hasMedia = Boolean(block.mediaUrl);
+  // Repository-managed slots point to a real GitHub file path, but the file
+  // may not exist yet. Treat those fixed paths as empty until the user uploads
+  // the matching file to public/media/.
+  const isGithubPlaceholder = Boolean(
+    block.mediaUrl && block.mediaUrl.includes('/media/') && block.mediaUrl.includes('chapter')
+  );
+  const hasMedia = Boolean(block.mediaUrl) && !isGithubPlaceholder;
   const currentIsVideo = block.type === 'video' || isVideoUrl(block.mediaUrl);
 
   const handleTypeChange = (newType: ContentBlockType) => {
