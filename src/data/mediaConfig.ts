@@ -1,16 +1,35 @@
 import { MediaItem } from '../types';
 
+
+const STATIC_MEDIA_BASE = `${import.meta.env.BASE_URL}media/`;
+
 export const DEFAULT_MEDIA_CONFIG: Record<string, string> = {
-  ADD_FIRST_PHOTO_HERE: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80',
-  ADD_MAHUDI_PHOTO_HERE: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80',
-  ADD_BHAVNATH_PHOTO_HERE: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
-  ADD_CHAT_SCREENSHOTS_HERE: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80',
-  ADD_31_MAY_PHOTO_HERE: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=800&q=80',
-  ADD_FIRST_MOVIE_PHOTO_HERE: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80',
-  ADD_HIS_DREAM_PHOTO_HERE: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80',
+  ADD_FIRST_PHOTO_HERE: `${STATIC_MEDIA_BASE}WhatsApp_Image_2026-09-29_at_6.47.42_PM.webp`,
+  ADD_MAHUDI_PHOTO_HERE: `${STATIC_MEDIA_BASE}WhatsApp_Image_2026-09-29_at_7.06.05_PM.webp`,
+  ADD_BHAVNATH_PHOTO_HERE: `${STATIC_MEDIA_BASE}WhatsApp_Image_2026-09-29_at_7.07.19_PM.webp`,
+  ADD_CHAT_SCREENSHOTS_HERE: `${STATIC_MEDIA_BASE}WhatsApp_Image_2026-09-29_at_7.17.16_PM.webp`,
+  ADD_31_MAY_PHOTO_HERE: `${STATIC_MEDIA_BASE}31may(1).mp4`,
+  ADD_FIRST_MOVIE_PHOTO_HERE: `${STATIC_MEDIA_BASE}3aug.webp`,
+  ADD_HIS_DREAM_PHOTO_HERE: `${STATIC_MEDIA_BASE}16aug.mp4`,
   ADD_VIDEO_HERE: '',
   ADD_MUSIC_HERE: '',
   ADD_VOICE_GREETING_HERE: '',
+  ADD_OUR_PHOTOS_HERE_1: `${STATIC_MEDIA_BASE}WhatsApp_Image_2026-09-29_at_6.47.42_PM.webp`,
+  ADD_OUR_PHOTOS_HERE_2: `${STATIC_MEDIA_BASE}31may(1).mp4`,
+  ADD_OUR_PHOTOS_HERE_3: `${STATIC_MEDIA_BASE}23july.mp4`,
+  ADD_OUR_PHOTOS_HERE_4: `${STATIC_MEDIA_BASE}1aug.webp`,
+  ADD_OUR_PHOTOS_HERE_5: `${STATIC_MEDIA_BASE}3aug.webp`,
+  ADD_OUR_PHOTOS_HERE_6: `${STATIC_MEDIA_BASE}6aug.webp`,
+  ADD_OUR_PHOTOS_HERE_7: `${STATIC_MEDIA_BASE}9aug.mp4`,
+  ADD_OUR_PHOTOS_HERE_8: `${STATIC_MEDIA_BASE}16aug.mp4`,
+  ADD_OUR_PHOTOS_HERE_9: `${STATIC_MEDIA_BASE}17aug.webp`,
+  ADD_OUR_PHOTOS_HERE_10: `${STATIC_MEDIA_BASE}18aug.webp`,
+  ADD_OUR_PHOTOS_HERE_11: `${STATIC_MEDIA_BASE}22aug.webp`,
+  ADD_OUR_PHOTOS_HERE_12: `${STATIC_MEDIA_BASE}23aug(1).mp4`,
+  ADD_OUR_PHOTOS_HERE_13: '',
+  ADD_OUR_PHOTOS_HERE_14: '',
+  ADD_OUR_PHOTOS_HERE_15: '',
+  ADD_OUR_PHOTOS_HERE_16: '',
 };
 
 export const DEFAULT_GALLERY_PHOTOS: {
