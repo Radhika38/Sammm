@@ -87,6 +87,24 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
   const [editingCard, setEditingCard] = useState<MemoryCard | null>(null);
   const [editCaption, setEditCaption] = useState('');
   const [editDate, setEditDate] = useState('');
+  const chapter8MediaOptions = [
+    ['ADD_OUR_PHOTOS_HERE_1', 'Memory 1 • 17 May — Chatorapan'],
+    ['ADD_OUR_PHOTOS_HERE_2', 'Memory 2 • 31 May — Cricket date'],
+    ['ADD_OUR_PHOTOS_HERE_3', 'Memory 3 • 23 July — Baarish'],
+    ['ADD_OUR_PHOTOS_HERE_4', 'Memory 4 • 1 Aug — Mandir date'],
+    ['ADD_OUR_PHOTOS_HERE_5', 'Memory 5 • 3 Aug — Birthday'],
+    ['ADD_OUR_PHOTOS_HERE_6', 'Memory 6 • 6 Aug — Ghumi ghumi'],
+    ['ADD_OUR_PHOTOS_HERE_7', 'Memory 7 • 9 Aug — First fight'],
+    ['ADD_OUR_PHOTOS_HERE_8', 'Memory 8 • 16 Aug — Devdas'],
+    ['ADD_OUR_PHOTOS_HERE_9', 'Memory 9 • 17 Aug — Patchup'],
+    ['ADD_OUR_PHOTOS_HERE_10', 'Memory 10 • 18 Aug — Second trip'],
+    ['ADD_OUR_PHOTOS_HERE_11', 'Memory 11 • 22 Aug — RF & sukoon'],
+    ['ADD_OUR_PHOTOS_HERE_12', 'Memory 12 • 23 Aug — Fav view'],
+    ['ADD_OUR_PHOTOS_HERE_13', 'Memory 13 • 28 Aug — Maroo hero'],
+    ['ADD_OUR_PHOTOS_HERE_14', 'Memory 14 • 7 Sep — My 2 fav'],
+    ['ADD_OUR_PHOTOS_HERE_15', 'Memory 15 • 19 Sep — Bhondu'],
+    ['ADD_OUR_PHOTOS_HERE_16', 'Memory 16 • 26 Sep — Favourite squish'],
+  ];
 
   // Save changes to localStorage and IndexedDB vault
   const saveCards = (newCards: MemoryCard[]) => {
@@ -219,7 +237,7 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
           Our Private Polaroid & Reel Gallery 📸🎞️
         </h2>
         <p className="text-xs sm:text-sm text-stone-300 font-sans max-w-xl mx-auto">
-          Apne hisab se photos aur videos upload karo, aur jo dil chahe likho!
+          Har memory ko apni jagah do — aur zarurat ho toh ✏️ se edit karo.
         </p>
       </motion.div>
 
@@ -429,6 +447,31 @@ export const Chapter08GalleryAndQuiz: React.FC<Chapter08GalleryAndQuizProps> = (
                 >
                   <X className="w-5 h-5" />
                 </button>
+              </div>
+
+              {/* Easy Memory Selector */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-mono text-[#e6be6d] uppercase tracking-wider">
+                  Which memory should be here? 📸
+                </label>
+                <select
+                  value={editingCard.mediaKey}
+                  onChange={(e) => {
+                    const updated = cards.map((c) =>
+                      c.id === editingCard.id ? { ...c, mediaKey: e.target.value } : c
+                    );
+                    setEditingCard({ ...editingCard, mediaKey: e.target.value });
+                    saveCards(updated);
+                  }}
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#0e030a] border border-[#6b162a] focus:border-[#e6be6d] text-white font-sans text-sm outline-none"
+                >
+                  {chapter8MediaOptions.map(([key, label]) => (
+                    <option key={key} value={key}>{label}</option>
+                  ))}
+                </select>
+                <p className="text-[10px] text-stone-500">
+                  Bas memory select karo — photo/video automatically change ho jayega.
+                </p>
               </div>
 
               {/* Caption Input */}
